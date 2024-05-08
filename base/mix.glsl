@@ -5,13 +5,12 @@ precision mediump float;
 
 uniform vec2 u_resolution;
 uniform float u_time;
-
-vec3 colorA=vec3(.1490,.141,.912);
-vec3 colorB=vec3(1.,.833,.224);
+// mix 插值
+// mix(x, y, z)  x*(1-z) + y*z
 void main(){
-  vec3 color=vec3(0.);
-  float pct=abs(sin(u_time));
-  // Mix uses pct (a value from 0-1) to// mix the two colors
-  color=mix(colorA,colorB,pct);
-  gl_FragColor=vec4(color,1.);
+    vec2 st=gl_FragCoord.xy/u_resolution.xy;
+    vec3 color1 =vec3(1.,0.,0.);
+    vec3 color2 =vec3(0.,0.,1.);
+    vec3 color3 = mix(color1,color2,st.y);
+    gl_FragColor=vec4(color3,1.);
 }
