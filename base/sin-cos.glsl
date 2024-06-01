@@ -10,14 +10,10 @@ uniform float u_time;
 void main(){
     vec2 st=gl_FragCoord.xy/u_resolution.xy;
     float strength = 1.;;
-    // if(st.y>0.49 && st.y<0.51){
-    //     strength = 1.;
-    // }
     if(st.y<0.49){
-        strength = cos(st.x*2.*PI);
-        
+        strength = cos(st.x*2.*PI); // 下方
     }else if (st.y>0.51){
-        strength = sin(st.x*2.*PI);
+        strength = sin(st.x*2.*PI); // 上方
     }
     gl_FragColor=vec4(vec3(strength),1.);
 }

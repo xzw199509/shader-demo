@@ -8,9 +8,7 @@ uniform float u_time;
 
 void main(){
     vec2 st=gl_FragCoord.xy/u_resolution.xy;
-    vec3 col = vec3(.0);
-    float angle = atan(st.x - 0.5, st.y - 0.5);
-    float strength = angle*1.0;
-    col = vec3(strength);
-    gl_FragColor=vec4(col,1.);
+
+    float strength = 0.015 / (distance(st, vec2(0.5)));
+    gl_FragColor=vec4(vec3(strength),1.);
 }

@@ -11,8 +11,6 @@ void main(){
     vec2 st=gl_FragCoord.xy/u_resolution.xy;
     float strength = 1.;
     st.x -=0.5;
-    st*=4.;
-    strength = tan(st.x);
-
+    strength = tan(st.x *2.*PI);
     gl_FragColor=vec4(vec3(strength),1.);
 }
